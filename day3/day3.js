@@ -9,23 +9,30 @@ fileSelector.addEventListener('change', (event) => {
 
 function solution(data) {
   const theData = data.split('\n');
-  let gRate;
-  let eRate;
-  let numberObject = [];
+  let gRate = "";
+  let eRate = "";
+  let numberArray = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
   for (i = 0; i < theData.length; i++) {
-    const dataPoint = theData[i].split('');
-    console.log(dataPoint);
-    // console.log(dataPoint[i]);
+    const dataRow = theData[i].split('');
+    for(v = 0; v < 12; v++) {
+      if (dataRow[v] == 1) {
+        numberArray[v]++
+      } else {
+        numberArray[v]--
+      }
+    }
   }
-
-  // numberObject.forEach((element) => console.log(element));
-
-  // let power = parseInt(gRate, 2) * parseInt(eRate, 2);
-  // console.log(power);
+  console.log(numberArray)
+  for (i = 0; i < numberArray.length; i++) {
+    if(Number(numberArray[i]) > 0) {
+      gRate += "1"
+      eRate += "0"
+    } else {
+      gRate += "0"
+      eRate += "1"
+    }
+  }
+  answer = parseInt(gRate, 2) * parseInt(eRate, 2)
+  console.log(answer);
 }
 
-function addArray(dataArray) {
-  for (i = 0; i < dataArray.length; i++) {
-    dataArray[i];
-  }
-}
